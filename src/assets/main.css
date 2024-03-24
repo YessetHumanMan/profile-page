@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .btn-profile {
+    @apply flex justify-center items-center font-medium text-sm text-gray-400 py-5 w-52;
+  }
+}

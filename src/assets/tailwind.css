@@ -1,0 +1,82 @@
+.btn {
+  @apply px-8 py-2  text-gray-100 bg-purple-700 hover:scale-105  tracking-normal rounded-sm;
+}
+
+.btn-outline {
+  @apply px-8 py-2  text-gray-100 border-purple-700 border-2 hover:bg-purple-700  tracking-normal rounded-sm;
+}
+
+.btn-outline-dyn {
+  @apply px-8 py-2 text-gray-100  tracking-normal rounded-sm hover:scale-105;
+}
+
+.btn-gray {
+  @apply px-8 py-2 bg-gray-800  text-gray-100 hover:scale-105 font-title tracking-normal rounded-sm;
+}
+
+.input {
+  @apply bg-gray-800 w-full p-1 border-2 border-gray-800  focus:border-gray-500 focus:outline-none text-gray-300;
+}
+
+.title-clickable {
+  @apply font-title text-gray-300 hover:text-purple-600 cursor-pointer font-extralight;
+}
+
+.title {
+  @apply font-title text-gray-300 tracking-wide font-extralight;
+}
+
+.text-clickable {
+  @apply text-gray-300 hover:text-purple-600 cursor-pointer;
+}
+
+.title-bg-uppercase {
+  @apply py-3 px-4 border-b border-gray-700 bg-gray-800 text-left text-sm font-semibold text-gray-300 uppercase tracking-wider;
+}
+
+.title-uppercase {
+  @apply text-sm font-semibold text-gray-300 uppercase tracking-wider;
+}
+
+.select {
+  @apply h-10 title-bg-uppercase focus:outline-none;
+}
+
+/* Forms */
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select,
+.form-checkbox,
+.form-radio {
+  @apply bg-transparent border-2 border-gray-700 focus:border-gray-500 focus:outline-none;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select,
+.form-checkbox {
+  @apply rounded-sm;
+}
+
+.form-input,
+.form-textarea,
+.form-multiselect,
+.form-select {
+  @apply py-3 px-4;
+}
+
+.form-input,
+.form-textarea {
+  @apply placeholder-gray-500;
+}
+
+.form-select {
+  @apply pr-10;
+}
+
+.form-checkbox,
+.form-radio {
+  @apply text-purple-600;
+}
