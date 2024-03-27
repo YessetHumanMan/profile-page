@@ -28,7 +28,7 @@ function set(c: Component) {
 }
 
 function styleBorder(c: Component) {
-  return current.value === c ? 'border-b-2 border-b-violet-800' : ''
+  return current.value === c ? 'border-b-2 border-b-purple-800' : ''
 }
 </script>
 <template>
