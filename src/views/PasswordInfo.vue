@@ -2,14 +2,14 @@
   <div class="flex">
     <form class="w-4/12 mr-24">
       <input
-        type="text"
+        type="password"
         class="w-80 bg-zinc-800 border hover:border-purple-600 focus:outline-none focus:ring focus:ring-purple-600 border-neutral-500 rounded-md py-2 px-3 text-slate-200 placeholder text-sm"
         placeholder="Текущий пароль"
       />
       <a class="text-purple-700 text-xs flex py-1" href="#">Забыли пароль?</a>
 
       <input
-        type="text"
+        type="password"
         class="mt-10 w-80 bg-zinc-800 border hover:border-purple-600 focus:outline-none focus:ring focus:ring-purple-600 border-neutral-500 rounded-md py-2 px-3 text-gray-800 placeholder text-sm"
         placeholder="Новый пароль"
       />

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { type Component, shallowRef } from 'vue'
+import { type Component, shallowRef, onMounted } from 'vue'
 import ProfileInfo from './ProfileInfo.vue'
 import PasswordInfo from './PasswordInfo.vue'
 import CertificateEmpty from './CertificateEmpty.vue'
