@@ -1,9 +1,9 @@
 <template>
   <div class="flex">
-    <form @submit.prevent @submit="updatePassword(token)" class="w-4/12 mr-24">
+    <form @submit.prevent="updatePassword(token)" class="w-4/12 mr-24">
       <input
-        v-model="userPasswordData.current_password"
         type="password"
+        v-model="userPasswordData.current_password"
         required
         class="w-80 bg-zinc-800 border hover:border-purple-600 focus:outline-none focus:ring focus:ring-purple-600 border-neutral-500 rounded-md py-2 px-3 text-slate-200 placeholder text-sm"
         placeholder="Текущий пароль"
@@ -11,19 +11,27 @@
       <a class="text-purple-700 text-xs flex py-1" href="#">Забыли пароль?</a>
 
       <input
+        :type="!isPasswordVisibleNew ? 'text' : 'password'"
         v-model="userPasswordData.new_password"
-        type="password"
         required
-        class="mt-10 w-80 bg-zinc-800 border hover:border-purple-600 focus:outline-none focus:ring focus:ring-purple-600 border-neutral-500 rounded-md py-2 px-3 text-gray-800 placeholder text-sm"
+        class="mt-10 w-80 bg-zinc-800 border hover:border-purple-600 focus:outline-none focus:ring focus:ring-purple-600 border-neutral-500 rounded-md py-2 px-3 text-slate-200 placeholder text-sm"
         placeholder="Новый пароль"
       />
+      <button @click="toggleNewPassword" class="-translate-x-10 translate-y-1">
+        <img v-if="isPasswordVisibleNew" src="/password-notshow.svg" alt="" />
+        <img v-else class="w-6 h-6" src="/password-show.svg" alt="" />
+      </button>
       <input
+        :type="!isPasswordVisibleConfirm ? 'text' : 'password'"
         v-model="userPasswordData.confirm_password"
-        type="password"
         required
         class="mt-8 w-80 bg-zinc-800 border hover:border-purple-600 focus:outline-none focus:ring focus:ring-purple-600 border-neutral-500 rounded-md py-2 px-3 text-slate-200 placeholder text-sm"
         placeholder="Повторите пароль"
       />
+      <button @click="toggleConfirmPassword" class="-translate-x-10 translate-y-1">
+        <img v-if="isPasswordVisibleConfirm" src="/password-notshow.svg" alt="" />
+        <img v-else class="w-6 h-6" src="/password-show.svg" alt="" />
+      </button>
       <button
         type="submit"
         class="mt-8 text-sm text-slate-200 py-2 px-4 bg-neutral-500 rounded-lg hover:bg-purple-600 transition duration-150 focus:outline-none focus:ring focus:ring-purple-600 active:bg-purple-900"
@@ -89,5 +97,16 @@ async function updatePassword(token: string) {
   } catch (error) {
     console.error('Ошибка:', error)
   }
+}
+
+const isPasswordVisibleNew = ref(false)
+const isPasswordVisibleConfirm = ref(false)
+
+function toggleNewPassword() {
+  isPasswordVisibleNew.value = !isPasswordVisibleNew.value
+}
+
+function toggleConfirmPassword() {
+  isPasswordVisibleConfirm.value = !isPasswordVisibleConfirm.value
 }
 </script>
