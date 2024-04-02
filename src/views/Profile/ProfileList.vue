@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import { type Component, shallowRef, onMounted } from 'vue'
-import ProfileInfo from './ProfileInfo.vue'
-import PasswordInfo from './PasswordInfo.vue'
-import CertificateEmpty from './CertificateEmpty.vue'
-import ProgressInfo from './ProgressInfo.vue'
+import { type Component, shallowRef } from 'vue'
+import ProfileInfo from './$partials/ProfileInfo.vue'
+import PasswordInfo from './$partials/PasswordInfo.vue'
+import CertificateEmpty from './$partials/CertificateEmpty.vue'
+import ProgressInfo from './$partials/ProgressInfo.vue'
 
 const current = shallowRef<Component>(ProfileInfo)
 const key = shallowRef<number>()

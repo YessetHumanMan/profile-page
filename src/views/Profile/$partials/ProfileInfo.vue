@@ -22,7 +22,7 @@
       </div>
     </div>
   </div>
-  <form @submit="getUser(token)" class="grid gap-4 grid-cols-2 w-3/4 mb-12">
+  <form @submit="updateUser(token)" class="grid gap-4 grid-cols-2 w-3/4 mb-12">
     <input
       v-model="userData.name"
       type="text"
@@ -43,7 +43,7 @@
     />
     <input
       v-model="userData.email"
-      type="text"
+      type="email"
       class="bg-zinc-800 border hover:border-purple-600 focus:outline-none focus:ring focus:ring-purple-600 border-neutral-500 rounded-md py-2 px-3 text-slate-200 placeholder text-sm"
       placeholder="Email*"
     />
@@ -60,7 +60,7 @@
 import { onMounted, ref } from 'vue'
 
 const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE1LCJuYW1lIjoiY29tcGxleHVzcHJhZGEiLCJyb2xlIjozLCJpc3MiOiIyMDI0LTA0LTAxVDEyOjQwOjMyLjExMTE3NDg4NVoiLCJleHAiOiIyMDI0LTA0LTAxVDE0OjQwOjMyLjExMTE3NTI4OVoifQ.A4s11-vtxjNPETxuMGraVZQwV7Gh88ARVqxIwzX05J8'
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsIm5hbWUiOiJjb21wbGV4aWEiLCJyb2xlIjoyLCJpc3MiOiIyMDI0LTA0LTAyVDA4OjM4OjQ5LjM5ODY4MzY1N1oiLCJleHAiOiIyMDI0LTA0LTAzVDA4OjM4OjQ5LjM5ODY4Mzg1MloifQ.feoymn0IMLC1HQtNi2MN88eS7gSp-zqKHxVElBf9th4'
 
 interface UserData {
   name: string
@@ -77,6 +77,7 @@ const userData = ref<UserData>({
   username: '',
   profile_image: ''
 })
+
 onMounted(async () => {
   const data = await getUser(token)
   userData.value.name = data.result.name
@@ -103,10 +104,8 @@ async function updateUser(token: string) {
 
     const result = await response.json()
     console.log('Пользователь успешно обновлен:', result)
-    // Здесь может быть код для обработки успешного обновления, например, показ сообщения пользователю
   } catch (error) {
     console.error('Ошибка:', error)
-    // Здесь может быть код для обработки ошибки, например, показ сообщения об ошибке
   }
 }
 

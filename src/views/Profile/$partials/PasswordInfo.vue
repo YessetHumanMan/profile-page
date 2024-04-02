@@ -1,20 +1,26 @@
 <template>
   <div class="flex">
-    <form class="w-4/12 mr-24">
+    <form @submit.prevent @submit="updatePassword(token)" class="w-4/12 mr-24">
       <input
+        v-model="userPasswordData.current_password"
         type="password"
+        required
         class="w-80 bg-zinc-800 border hover:border-purple-600 focus:outline-none focus:ring focus:ring-purple-600 border-neutral-500 rounded-md py-2 px-3 text-slate-200 placeholder text-sm"
         placeholder="Текущий пароль"
       />
       <a class="text-purple-700 text-xs flex py-1" href="#">Забыли пароль?</a>
 
       <input
+        v-model="userPasswordData.new_password"
         type="password"
+        required
         class="mt-10 w-80 bg-zinc-800 border hover:border-purple-600 focus:outline-none focus:ring focus:ring-purple-600 border-neutral-500 rounded-md py-2 px-3 text-gray-800 placeholder text-sm"
         placeholder="Новый пароль"
       />
       <input
+        v-model="userPasswordData.confirm_password"
         type="password"
+        required
         class="mt-8 w-80 bg-zinc-800 border hover:border-purple-600 focus:outline-none focus:ring focus:ring-purple-600 border-neutral-500 rounded-md py-2 px-3 text-slate-200 placeholder text-sm"
         placeholder="Повторите пароль"
       />
@@ -42,3 +48,46 @@
     </ul>
   </div>
 </template>
+
+<script setup lang="ts">
+import { onMounted, ref } from 'vue'
+
+const token =
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjUsIm5hbWUiOiJjb21wbGV4aWEiLCJyb2xlIjoyLCJpc3MiOiIyMDI0LTA0LTAyVDA4OjM4OjQ5LjM5ODY4MzY1N1oiLCJleHAiOiIyMDI0LTA0LTAzVDA4OjM4OjQ5LjM5ODY4Mzg1MloifQ.feoymn0IMLC1HQtNi2MN88eS7gSp-zqKHxVElBf9th4'
+
+interface UserPasswordData {
+  confirm_password: string
+  current_password: string
+  new_password: string
+}
+
+const userPasswordData = ref<UserPasswordData>({
+  confirm_password: '',
+  current_password: '',
+  new_password: ''
+})
+
+onMounted(async () => {})
+
+async function updatePassword(token: string) {
+  try {
+    const response = await fetch('http://back-dev.irange.com/api/v1/profile/password', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify(userPasswordData.value)
+    })
+
+    if (!response.ok) {
+      throw new Error('Ошибка при обновлении пользователя')
+    }
+
+    const result = await response.json()
+    console.log('Пользователь успешно обновлен:', result)
+  } catch (error) {
+    console.error('Ошибка:', error)
+  }
+}
+</script>
