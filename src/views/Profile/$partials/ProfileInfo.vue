@@ -125,10 +125,8 @@ async function getUser(token: string) {
 
     const result = await response.json()
     return result
-    // Здесь может быть код для обработки успешного обновления, например, показ сообщения пользователю
   } catch (error) {
     console.error('Ошибка:', error)
-    // Здесь может быть код для обработки ошибки, например, показ сообщения об ошибке
   }
 }
 </script>

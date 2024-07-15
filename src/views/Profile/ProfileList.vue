@@ -3,6 +3,7 @@ import { type Component, shallowRef } from 'vue'
 import ProfileInfo from './$partials/ProfileInfo.vue'
 import PasswordInfo from './$partials/PasswordInfo.vue'
 import CertificateEmpty from './$partials/CertificateEmpty.vue'
+
 import ProgressInfo from './$partials/ProgressInfo.vue'
 
 const current = shallowRef<Component>(ProfileInfo)
